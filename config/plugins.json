@@ -1,0 +1,12 @@
+[
+    {
+        "slug": "test-plugin",
+        "version": "2.0.0",
+        "gitpath": "/Users/albertomartin/Desktop/App update directory/plugins/test_update"
+    },
+        {
+        "slug": "delivery_date",
+        "version": "3.0.0",
+        "gitpath": ""
+    }
+]

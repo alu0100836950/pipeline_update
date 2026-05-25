@@ -4,8 +4,10 @@ import os
 
 BASE_URL = "http://test-plugin.local/"
 
+product_url = "http://test-plugin.local/product/basic-t-shirt/"
+
 def add_product_to_cart(page: Page):
-    product_url = "http://test-plugin.local/product/basic-t-shirt/"
+    
     print(f"Testing checkout for product: {product_url}")
 
     # Ir al producto
@@ -56,5 +58,22 @@ def test_checkout(page: Page):
     expect(page.locator("#ui-datepicker-div")).to_be_visible() 
 
     page.screenshot(path="../assets/img/checkout_with_calendar.png", full_page=True) 
+
+
+def test_product_messages(page: Page):
+    '''Test that the product messages are displayed correctly on the product page.'''
+
+    # Ir a la pagina de un producto
+    # Revisar que ambos mensajes se muestran correctamente en la página de producto
+
+    page.goto(product_url)
+    page.wait_for_load_state("domcontentloaded")
+
+    picked_up_message = page.locator("#ywcdd_info_shipping_date")
+    expect(picked_up_message).to_be_visible()
+
+    delivery_message = page.locator("#ywcdd_info_first_delivery_date")
+    expect(delivery_message).to_be_visible()
+
 
 
